@@ -27,9 +27,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000304d  00000000  00000000  00020035  2**0
+ 12 .debug_info   0000304f  00000000  00000000  00020035  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00000e9f  00000000  00000000  00023082  2**0
+ 13 .debug_abbrev 00000e9f  00000000  00000000  00023084  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  14 .debug_aranges 000003e8  00000000  00000000  00023f28  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -37,11 +37,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  000155b7  00000000  00000000  00024670  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   000053c1  00000000  00000000  00039c27  2**0
+ 17 .debug_line   000053c3  00000000  00000000  00039c27  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000799af  00000000  00000000  0003efe8  2**0
+ 18 .debug_str    000799af  00000000  00000000  0003efea  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000b8997  2**0
+ 19 .comment      00000053  00000000  00000000  000b8999  2**0
                   CONTENTS, READONLY
  20 .debug_frame  00000d94  00000000  00000000  000b89ec  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -107,19 +107,19 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
  800015a:	f000 f97d 	bl	8000458 <MX_GPIO_Init>
-  /* USER CODE BEGIN 2 */
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
+  //Quy ước:
+  /* Mỗi 5 giây -> LED hiển thị giây di chuyển 1đv*/
+  /* Mỗi 60 giây (LED hiển thị giây quay 1 vòng) -> LED hiển thị phút di chuyển 1đv */
+  /* LED hiển thị phút quay 1 vòng -> LED hiển thị giờ di chuyển 1đv */
+  /* không giống với thực tế vì để giảm thời gian kiểm tra */
   clearAllClock();
  800015e:	f000 f83f 	bl	80001e0 <clearAllClock>
-  int second = 0, minute = 0, hour = 0;
+  int second = 0, minute = 10, hour = 5; // start at 5:10:00
  8000162:	2300      	movs	r3, #0
  8000164:	60fb      	str	r3, [r7, #12]
- 8000166:	2300      	movs	r3, #0
+ 8000166:	230a      	movs	r3, #10
  8000168:	60bb      	str	r3, [r7, #8]
- 800016a:	2300      	movs	r3, #0
+ 800016a:	2305      	movs	r3, #5
  800016c:	607b      	str	r3, [r7, #4]
   int counter = 0;
  800016e:	2300      	movs	r3, #0
