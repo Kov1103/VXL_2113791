@@ -93,8 +93,13 @@ int main(void)
   /* USER CODE END 2 */
 
   /* Infinite loop */
+  //Quy ước:
+  /* Mỗi 5 giây -> LED hiển thị giây di chuyển 1đv*/
+  /* Mỗi 60 giây (LED hiển thị giây quay 1 vòng) -> LED hiển thị phút di chuyển 1đv */
+  /* LED hiển thị phút quay 1 vòng -> LED hiển thị giờ di chuyển 1đv */
+  /* không giống với thực tế vì để giảm thời gian kiểm tra */
   clearAllClock();
-  int second = 0, minute = 0, hour = 0;
+  int second = 0, minute = 10, hour = 5; // start at 5:10:00
   int counter = 0;
   while (1)
   {
